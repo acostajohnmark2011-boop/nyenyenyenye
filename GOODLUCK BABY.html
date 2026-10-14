@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+</head>
+<body>
+  <h1>
+    Hello, World!
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Luck Baby ♡</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+  background: radial-gradient(circle, #632b7c, #170c28, #080612);
+  overflow-x: hidden;
+  padding: 25px 15px;
+}
+
+.container {
+  max-width: 450px;
+  margin: auto;
+  padding: 25px 18px;
+  border: 1px solid #ffb6ec70;
+  border-radius: 25px;
+  background: #ffffff12;
+  box-shadow: 0 0 35px #ed55ff40;
+}
+
+h1 {
+  color: #ffc1ef;
+  text-shadow: 0 0 20px #ff45c8;
+}
+
+.heart {
+  font-size: 55px;
+  animation: beat 1s infinite;
+}
+
+@keyframes beat {
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+button {
+  border: none;
+  border-radius: 30px;
+  padding: 13px 18px;
+  margin: 7px;
+  background: linear-gradient(45deg, #ff4fa3, #a65cff);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff4fa366;
+}
+
+button:active {
+  transform: scale(.94);
+}
+
+.hidden {
+  display: none;
+}
+
+#message {
+  line-height: 1.9;
+  font-size: 16px;
+  margin-top: 25px;
+  color: #fff0fb;
+  animation: appear 1s ease;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#surprises {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+#surprises button {
+  margin: 0;
+}
+
+#note {
+  color: #ffc6eb;
+  min-height: 0;
+  margin-top: 20px;
+  line-height: 1.7;
+}
+
+.floating {
+  position: fixed;
+  pointer-events: none;
+  animation: float 3s linear forwards;
+  z-index: 10;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0) rotate(0deg) scale(.6);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100vh) rotate(360deg) scale(1.5);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="heart">♡</div>
+
+  <h1>Good Luck, Baby!</h1>
+
+  <p id="intro">
+    Haii baby koo. ♡
+  </p>
+
+  <button id="start" onclick="start()">
+    Open mo, baby 💌
+  </button>
+
+  <div id="game" class="hidden">
+
+    <div id="surprises">
+      <button onclick="surprise(0)">Click 1 ♡</button>
+      <button onclick="surprise(1)">Click 2 ✨</button>
+      <button onclick="surprise(2)">Click 3 💗</button>
+      <button onclick="surprise(3)">Click 4 🌷</button>
+      <button onclick="surprise(4)">Click 5 💌</button>
+      <button onclick="letter()">Open My Letter 💝</button>
+    </div>
+
+    <p id="note"></p>
+
+    <div id="message" class="hidden">
+
+      baby good luck and God bless you bukas po haa remember baby doing your best is enough na kahit matalo pa yan at least ginawa mo best mo baby dbaa manalo matalo proud na proud ako, kami sayo mahal na mahal kita baby mwamwaamwaa
+
+      <br><br>
+
+      <button onclick="hearts(40)">
+        Click 👆
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+const notes = [
+  "Baby, naniniwala ako sa'yo palagi. ♡",
+  "Doing your best is enough na, baby. ✨",
+  "Manalo matalo, proud na proud ako sa'yo! 💗",
+  "Pray, breathe, and do your best bukas, baby. 🌷",
+  "Sending you lots of love and virtual hugs! 💌"
+];
+
+function start() {
+  document.getElementById("intro").classList.add("hidden");
+  document.getElementById("start").classList.add("hidden");
+  document.getElementById("game").classList.remove("hidden");
+
+  hearts(20);
+}
+
+function surprise(i) {
+  document.getElementById("note").textContent = notes[i];
+
+  hearts(12);
+}
+
+function letter() {
+  document.getElementById("message").classList.remove("hidden");
+  document.getElementById("note").textContent = "";
+
+  hearts(35);
+}
+
+function hearts(amount) {
+  const symbols = ["💗", "♡", "♥", "💕", "✨"];
+
+  for (let i = 0; i < amount; i++) {
+    const h = document.createElement("span");
+
+    h.className = "floating";
+    h.textContent = symbols[
+      Math.floor(Math.random() * symbols.length)
+    ];
+
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.top = (50 + Math.random() * 50) + "vh";
+    h.style.fontSize = (18 + Math.random() * 20) + "px";
+    h.style.animationDelay = Math.random() * 1.5 + "s";
+
+    document.body.appendChild(h);
+
+    setTimeout(() => h.remove(), 4000);
+  }
+}
+</script>
+
+</body>
+</html>
